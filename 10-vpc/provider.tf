@@ -9,9 +9,9 @@ terraform {
 
  backend "s3" {
     bucket = "prami-terraform"
-    key    = "terraform-infra"
+    key    = "expense-inf"
     region = "us-east-1"
-    dynamodb_table = "terraform-lock"
+    dynamodb_table = "prami-locking-dev"
   }
 
 

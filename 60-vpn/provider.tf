@@ -8,10 +8,10 @@ terraform {
 
 
  backend "s3" {
-    bucket = "prameela-rootstate"
-    key    = "expense-vpn"
+    bucket = "prami-terraform"
+    key    = "expense-inthree"
     region = "us-east-1"
-    dynamodb_table = "prameela-lock"
+    dynamodb_table = "prami-locking-dev"
   }
 
 

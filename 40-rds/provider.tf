@@ -8,10 +8,10 @@ terraform {
 
 
  backend "s3" {
-    bucket = "prameela-rootstate"
-    key    = "expense-infra1"
+    bucket = "prami-terraform"
+    key    = "expense-in1"
     region = "us-east-1"
-    dynamodb_table = "prameela-lock"
+    dynamodb_table = "prami-locking-dev"
   }
 
 
