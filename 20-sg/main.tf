@@ -1,5 +1,5 @@
 module "mysql_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "mysql"
@@ -9,7 +9,7 @@ module "mysql_sg" {
 }
 
 module "backend_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "backend"
@@ -20,7 +20,7 @@ module "backend_sg" {
 
 
 module "frontend_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "frontend"
@@ -29,7 +29,7 @@ module "frontend_sg" {
     sg_tags = var.frontent_sg-tags
 }
 module "bastion_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "bastion"
@@ -38,7 +38,7 @@ module "bastion_sg" {
     sg_tags = var.bastion_sg-tags
 }
 module "ansible_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "ansible"
@@ -48,7 +48,7 @@ module "ansible_sg" {
 }
 
 module "app_alb_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main" 
     project_name = var.project_name
     environment = var.environment
     sg_name = "app_alb"
@@ -57,7 +57,7 @@ module "app_alb_sg" {
     sg_tags = var.app_alb_sg_tags
 }
 module "vpn_sg" {
-    source = "../../terraform-aws-securitygroup"
+    source = "git::https://github.com/prameela-namala/terraform-aws-securitygroup.git?ref=main"
     project_name = var.project_name
     environment = var.environment
     sg_name = "vpn"
