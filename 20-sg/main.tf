@@ -236,3 +236,11 @@ resource "aws_security_group_rule" "backend-vpn" {
   source_security_group_id = module.vpn_sg.id
   security_group_id = module.backend_sg.id
 }
+
+resource "aws_security_group_rule" "backend-bastion-8080" {
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  source_security_group_id = module.bastion_sg.id
+  security_group_id = module.backend_sg.id
