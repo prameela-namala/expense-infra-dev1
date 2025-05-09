@@ -65,3 +65,10 @@ variable "vpn_sg_tags" {
         component = "vpn"
    }
 }
+
+variable "web_alb_sg_tags" {
+  
+   default = {
+        component = "vpn"
+   }
+}
