@@ -32,7 +32,10 @@ resource "null_resource" "backend" {
   }
 
   provisioner "file" {
-    source      = "${var.backend_tags.Component}.sh"
+    #source      = "${var.backend_tags.Component}.sh"
+    #source      = "${path.module}/scripts/${var.backend_tags.Component}.sh"
+    source = "${path.module}/${var.backend_tags.Component}.sh"
+
     destination = "/tmp/backend.sh"
   }
 
@@ -64,9 +67,14 @@ resource "null_resource" "backend_delete" {
     instance_id = module.backend.id
   }
 
+  # provisioner "local-exec" {
+  #   command = "aws ec2 terminate-instances --instance-ids ${module.backend.id}"
+  # }
   provisioner "local-exec" {
-    command = "aws ec2 terminate-instances --instance-ids ${module.backend.id}"
-  }
+  command     = "aws ec2 terminate-instances --instance-ids ${module.backend.id}"
+  interpreter = ["bash", "-c"]
+}
+
 
   depends_on = [aws_ami_from_instance.backend]
 }
@@ -129,7 +137,12 @@ resource "aws_autoscaling_group" "backend" {
     preferences {
       min_healthy_percentage = 50
     }
-    triggers = ["launch_template"]
+     triggers = ["launch_template"]
+#     triggers = {
+#       launch_template_id      = aws_launch_template.backend.id
+#       launch_template_version = aws_launch_template.backend.latest_version
+# }
+
   }
 
   tag {
